@@ -1,8 +1,9 @@
 export type MythPointType =
-    | "place"
+    | "god"
     | "creature"
     | "event"
     | "artifact"
+    | "hero"
 
 export interface MythPoint {
     id: string
@@ -15,7 +16,7 @@ export const layerStyles: Record<MythPointType, {
     color: string
     fillColor: string
 }> = {
-    place: {
+    god: {
         color: "#ffd700",
         fillColor: "#ffd700",
     },
@@ -31,28 +32,61 @@ export const layerStyles: Record<MythPointType, {
         color: "#54ff3c",
         fillColor: "#54ff3c",
     },
+    hero: {
+        color: "#a855f7",
+        fillColor: "#a855f7"
+    }
 }
 
-//a855f7 morado bkn
 
 export const mythPoints: MythPoint[] = [
     {
-        id: "asgard",
-        name: "Asgard",
-        type: "place",
+        id: "thor",
+        name: "Thor",
+        type: "god",
         position: [61.0, 8.0],
     },
     {
-        id: "athens",
-        name: "Athens",
-        type: "place",
+        id: "athenea",
+        name: "Athenea",
+        type: "god",
         position: [37.9838, 23.7275],
+    },
+    {
+        id: "poseidon",
+        name: "Poseidon",
+        type: "god",
+        position: [37.773, 24.430],
+    },
+    {
+        id: "quetzalcoatl",
+        name: "Quetzalcoatl",
+        type: "god",
+        position: [19.285, -99.164],
+    },
+    {
+        id: "ra",
+        name: "Ra",
+        type: "god",
+        position: [29.979, 31.134],
     },
     {
         id: "hydra",
         name: "Lernaean Hydra",
         type: "creature",
         position: [37.7, 22.8],
+    },
+    {
+        id: "alicanto",
+        name: "Alicanto",
+        type: "creature",
+        position: [-21.213, -69.625],
+    },
+    {
+        id: "akhlut",
+        name: "Akhlut",
+        type: "creature",
+        position: [69.473, -49.591],
     },
     {
         id: "trojan-war",
@@ -65,6 +99,12 @@ export const mythPoints: MythPoint[] = [
         name: "Excalibur",
         type: "artifact",
         position: [50.668, -4.789],
+    },
+    {
+        id: "heracles",
+        name: "Heracles",
+        type: "hero",
+        position: [36.7, 21.8],
     },
 ]
 

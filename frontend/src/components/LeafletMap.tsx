@@ -2,10 +2,10 @@
 
 import { MapContainer, TileLayer, Marker, Popup, CircleMarker, LayerGroup } from "react-leaflet"
 import L from "leaflet"
-import { useState } from "react"
-import { mythPoints, layerStyles, MythPoint, MythPointType  } from "@/lib/mapLayers"
+import { mythPoints, layerStyles, MythPoint, MythPointType } from "@/lib/mapLayers"
 
 delete (L.Icon.Default.prototype as any)._getIconUrl
+
 
 L.Icon.Default.mergeOptions({
     iconRetinaUrl:
@@ -16,15 +16,25 @@ L.Icon.Default.mergeOptions({
         "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
 })
 
+
+interface LeafletMapProps{
+    visibleLayers: Record<MythPointType, boolean>
+}
+
+
+
 const worldBounds: [[number, number], [number, number]] = [
     [-85, -180],
     [85, 180],
 ]
 
-const points = [
-    { name: "Athens", lat: 37.9838, lon: 23.7275 },
-    { name: "Asgard", lat: 60.0, lon: 10.0 }
-]
+
+
+//Puntos de prueba inicial, no necesarios, Agu del futuro --> se pueden borrar en cualquier momento
+//const points = [
+//    { name: "Athens", lat: 37.9838, lon: 23.7275 },
+//    { name: "Asgard", lat: 60.0, lon: 10.0 }
+//]
 
 
 
@@ -32,17 +42,11 @@ const pointsByType = mythPoints.reduce((acc, point) => {
     acc[point.type] = acc[point.type] || []
     acc[point.type].push(point)
     return acc
-}, {} as Record<string, MythPoint[]>)
+}, {} as Record<MythPointType, MythPoint[]>)
 
-export default function LeafletMap() {
 
-    const [visibleLayers, setVisibleLayers] = useState<Record<MythPointType, boolean>>({
-        place: true,
-        creature: true,
-        event: true,
-        artifact: true,
-    })
 
+export default function LeafletMap({ visibleLayers }: LeafletMapProps) {
 
     return (
         <MapContainer
@@ -62,13 +66,10 @@ export default function LeafletMap() {
                 ////noWrap={true} //Esto trunca el mapa a maximo un mapamundi sin repeticiones a los lados, pero se ve feo, asi que mejor dejarlo como esta ahora
             />
             
-            
-            
             {Object.entries(pointsByType).map(([type, points]) => {
 
                 if(!visibleLayers[type as MythPointType]) return null
-
-                const style = layerStyles[type as keyof typeof layerStyles]
+                const style = layerStyles[type as MythPointType]
 
                 return (
                     <LayerGroup key={type}>
@@ -85,7 +86,7 @@ export default function LeafletMap() {
                             >
                                 <Popup>
                                     <strong>{point.name}</strong><br />
-                                    {type}
+                                    <span className="capitalize">{type}</span>
                                 </Popup>
                             </CircleMarker>
                         ))}
