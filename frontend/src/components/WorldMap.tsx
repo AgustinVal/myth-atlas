@@ -2,6 +2,7 @@
 "use client"
 
 import { useState } from "react"
+import { useEffect } from "react"
 import dynamic from "next/dynamic"
 import type { MythPointType } from "@/lib/mapLayers"
 import { layerStyles } from "@/lib/mapLayers"
@@ -10,6 +11,41 @@ const LeafletMap = dynamic(
     () => import("./LeafletMap"),
     { ssr: false }
 )
+
+
+const ALL_LAYERS: MythPointType[] = [
+    "god",
+    "creature",
+    "event",
+    "artifact",
+    "hero",
+]
+
+
+function getRandomLayerState(): Record<MythPointType, boolean> {
+    const result: Record<MythPointType, boolean> = {
+        god: false,
+        creature: false,
+        event: false,
+        artifact: false,
+        hero: false,
+    }
+
+    // número aleatorio de capas activas (1 → todas)
+    const activeCount = Math.floor(Math.random() * ALL_LAYERS.length) + 1
+
+    // barajar capas
+    const shuffled = [...ALL_LAYERS].sort(() => Math.random() - 0.5)
+
+    shuffled.slice(0, activeCount).forEach(layer => {
+        result[layer] = true
+    })
+
+    return result
+}
+
+
+
 
 export default function WorldMap() {
 
@@ -22,6 +58,19 @@ export default function WorldMap() {
         hero: true,
     })
 
+    const [autoMode, setAutoMode] = useState(true)
+
+    useEffect(() => {
+        if (!autoMode) return
+
+        const interval = setInterval(() => {
+            setVisibleLayers(getRandomLayerState())
+        }, 6000) // Cada 6 segundos
+
+        return () => clearInterval(interval)
+    }, [autoMode])
+
+    
     return (
         <section className="relative h-screen w-full z-0 px-32 py-16">
             
@@ -41,12 +90,13 @@ export default function WorldMap() {
                         <input
                             type="checkbox"
                             checked={isVisible}
-                            onChange={() =>
+                            onChange={() => {
+                                setAutoMode(false)
                                 setVisibleLayers(prev => ({
                                     ...prev,
                                     [type]: !prev[type as MythPointType],
                                 }))
-                            }
+                            }}
                         />
                         <span className="capitalize">{type}</span>
                     </label>

@@ -27,3 +27,187 @@ body {
 
 
 @import "leaflet/dist/leaflet.css";
+
+
+.myth-point {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+
+.myth-creature {
+  animation: pulse-red 2.5s infinite;
+}
+
+@keyframes pulse-red {
+  0% { r: 6; opacity: 0.3 }
+  50% { r: 10; opacity: 1 }
+  100% { r: 6; opacity: 0.3 }
+}
+
+
+/* Gods */
+.myth-god {
+  animation: place-breathe 5s ease-in-out infinite;
+}
+
+@keyframes place-breathe {
+  0% {
+    opacity: 0.5;
+    filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.3));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.7));
+  }
+  100% {
+    opacity: 0.5;
+    filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.3));
+  }
+}
+
+
+/* Artefactos: dorado intermitente */
+.myth-artifact {
+  animation: glow-gold 3s infinite;
+}
+
+
+@keyframes glow-gold {
+  0% { filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.4)); }
+  50% { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.9)); }
+  100% { filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.4)); }
+}
+
+
+
+
+.myth-event {
+  animation: event-flicker 4s infinite;
+}
+
+@keyframes event-flicker {
+  0% {
+    opacity: 1;
+  }
+  5% {
+    opacity: 0.1;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  15% {
+    opacity: 0.2;
+  }
+  20% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
+
+.myth-hero {
+  animation: divine-halo 6s infinite;
+}
+
+@keyframes divine-halo {
+  0% {
+    filter: drop-shadow(0 0 6px rgba(186, 230, 253, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 14px rgba(186, 230, 253, 1));
+  }
+  100% {
+    filter: drop-shadow(0 0 6px rgba(186, 230, 253, 0.5));
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
