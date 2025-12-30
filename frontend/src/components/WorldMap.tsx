@@ -44,12 +44,11 @@ function getRandomLayerState(): Record<MythPointType, boolean> {
     return result
 }
 
-
-
-
 export default function WorldMap() {
 
-    {/*Este es el default del sidebar */}
+    // Estados (UI /control)
+
+    //Este es el default del sidebar 
     const [visibleLayers, setVisibleLayers] = useState<Record<MythPointType, boolean>> ({
         god: true,
         creature: true,
@@ -60,6 +59,7 @@ export default function WorldMap() {
 
     const [autoMode, setAutoMode] = useState(true)
 
+    // Efectos
     useEffect(() => {
         if (!autoMode) return
 
@@ -70,7 +70,18 @@ export default function WorldMap() {
         return () => clearInterval(interval)
     }, [autoMode])
 
-    
+    // Datos dummy por ahora, cuando conecte la base de datos ojala mantener estos numeros para esta seccion y no muchos mas, cosa de la base de datos completa que sea premium
+    const layerCounts: Record<MythPointType, number> = {
+        god: 101,         // GOD_POINTS.length,
+        creature: 151,    // CREATURE_POINTS.length,
+        event: 14,        // EVENT_POINTS.length,
+        artifact: 21,     // ARTIFACT_POINTS.length,
+        hero: 30,         // HERO_POINTS.length,
+    }
+
+
+
+    // Render
     return (
         <section className="relative h-screen w-full z-0 px-32 py-16">
             
@@ -81,7 +92,7 @@ export default function WorldMap() {
                 <h3 className="text-sm font-semibold mb-3">
                     Map Layers
                 </h3>
-
+                {/* Checkboxes */}
                 {Object.entries(visibleLayers).map(([type, isVisible]) => (
                     <label
                         key={type}
@@ -101,6 +112,29 @@ export default function WorldMap() {
                         <span className="capitalize">{type}</span>
                     </label>
                 ))}
+
+                {/** Divider */}
+                <div className="my-3 border-t border-[#2a2a45]" />
+
+                {/** Counters */}
+                <div className="space-y-1 text-xs text-[#cbd5f5]">
+                    {Object.entries(visibleLayers).map(([type, isVisible]) => {
+                        if (!isVisible) return null
+
+                        return (
+                            <div
+                                key={type}
+                                className="flex justify-between animate-fade-in"
+                            >
+                                <span className="capitalize">{type}</span>
+                                <span className="font-mono">
+                                    {layerCounts[type as MythPointType]}
+                                </span>
+                            </div>
+                        )
+                    })}
+                </div>            
+                
             </aside>
             
             {/* Map container */}
