@@ -6,6 +6,7 @@ import { useEffect } from "react"
 import dynamic from "next/dynamic"
 import type { MythPointType } from "@/lib/mapLayers"
 import { layerStyles } from "@/lib/mapLayers"
+import MythElements from "./MythElements"
 
 const LeafletMap = dynamic(
     () => import("./LeafletMap"),
@@ -83,7 +84,13 @@ export default function WorldMap() {
 
     // Render
     return (
-        <section className="relative h-screen w-full z-0 px-32 py-16">
+        <section className="relative h-screen worldmap-bg w-full z-0 px-32 py-16">
+
+            {/* Stars layer */}
+            <div className="absolute inset-0 stars-layer pointer-events-none" />
+
+            {/* Myth elements */}
+            <MythElements />
             
             {/* Sidebar */}
             <aside

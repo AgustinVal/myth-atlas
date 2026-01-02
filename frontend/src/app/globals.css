@@ -29,6 +29,126 @@ body {
 @import "leaflet/dist/leaflet.css";
 
 
+
+/* ===== HERO BACKGROUND ===== */
+
+@keyframes myth-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hero-bg {
+  background: linear-gradient(
+    120deg,
+    #101939,
+    #1b1b2f,
+    #010101
+  );
+  background-size: 300% 300%;
+  animation: myth-gradient 30s ease infinite;
+}
+
+
+/* ===== WORLDMAP BACKGROUND ===== */
+
+.worldmap-bg {
+  background: linear-gradient(
+    120deg,
+    #3b0e42,
+    #2d1731,
+    #070508
+  );
+  background-size: 300% 300%;
+  animation: myth-gradient 30s ease infinite;
+}
+
+
+
+/* ===== STARS LAYER ===== */
+
+.stars-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  /* estrellas pequeñas (base) */
+  background-image:
+    radial-gradient(rgba(255,255,255,0.25) 1px, transparent 1px),
+    radial-gradient(rgba(255,255,255,0.15) 2px, transparent 2px);
+
+  background-size:
+    40px 40px,
+    140px 140px;
+
+  background-position:
+    0 0,
+    20px 60px;
+
+  animation: stars-drift 140s linear infinite;
+}
+
+@keyframes stars-drift {
+  from {
+    background-position:
+      0 0,
+      20px 60px;
+  }
+  to {
+    background-position:
+      600px 300px,
+      -400px 200px;
+  }
+}
+
+
+
+
+
+
+
+
+
+/* ===== MYTH ELEMENTS ===== */
+
+.myth-elements {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.myth-element {
+  position: absolute;
+  opacity: 0.2;
+  animation-name: myth-float;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+@keyframes myth-float {
+  from {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate(var(--dx), var(--dy)) rotate(360deg);
+  }
+}
+
+
+
+
+
+
+/* ===== MAP POINTS ===== */
+
 .myth-point {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
@@ -79,8 +199,6 @@ body {
 }
 
 
-
-
 .myth-event {
   animation: event-flicker 4s infinite;
 }
@@ -107,8 +225,6 @@ body {
 }
 
 
-
-
 .myth-hero {
   animation: divine-halo 6s infinite;
 }
@@ -127,7 +243,7 @@ body {
 
 
 
-
+/* ===== COUNTER MAP ===== */
 
 
 .counter {
