@@ -49,15 +49,7 @@ export default function Hero() {
                 <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="
-                        px-8 py-4 rounded-full
-                        border border-[#ffd700]
-                        text-[#ffd700]
-                        bg-transparent
-                        shadow-[0_0_20px_rgba(255,215,0,0.25)]
-                        hover:shadow-[0_0_30px_rgba(255,215,0,0.5)]
-                        transition
-                    "
+                    className="px-8 py-4 rounded-full border border-[#ffd700] text-[#ffd700] bg-transparent shadow-[0_0_20px_rgba(255,215,0,0.25)] hover:shadow-[0_0_30px_rgba(255,215,0,0.5)] transition"
                 >
                     Explore the World
                 </motion.button>
