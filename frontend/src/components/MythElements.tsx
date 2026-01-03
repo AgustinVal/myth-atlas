@@ -34,7 +34,7 @@ export default function MythElements() {
                 dx: random(-80, 80),
                 dy: random(-80, 80),
                 // Tamaño variable
-                size: random(18, 50),
+                size: random(8, 70),
                 // Velocidad variable
                 duration: random(25, 50),
             }))

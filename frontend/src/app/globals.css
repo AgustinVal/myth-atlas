@@ -110,6 +110,43 @@ body {
 
 
 
+/* ===== CONSTELLATIONS LAYER ===== */
+
+.constellations-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.constellation {
+  position: absolute;
+  opacity: 0.25;
+  animation: constellation-drift linear infinite;
+}
+
+@keyframes constellation-drift {
+  from {
+    transform: translateX(-120vw);
+  }
+  to {
+    transform: translateX(120vw);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
