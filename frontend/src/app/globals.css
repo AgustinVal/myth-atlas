@@ -115,32 +115,68 @@ body {
 .constellations-layer {
   position: absolute;
   inset: 0;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
   overflow: hidden;
+  z-index: 1;
+}
+
+/*
+.constellation {
+  position: absolute;
+  opacity: 1;
+  will-change: transform;
+}
+*/
+
+@keyframes sky-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.constellations-layer {
+  animation: sky-rotate 600s linear infinite;
+  transform-origin: center;
+}
+
+
+/* -----------  */
+
+
+.constellations-wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.constellations-track {
+  position: absolute;
+  width: 200vw; /* dos cielos */
+  height: 100%;
+  display: flex;
+  animation: sky-scroll 240s linear infinite;
+}
+
+@keyframes sky-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .constellation {
   position: absolute;
-  opacity: 0.25;
-  animation: constellation-drift linear infinite;
+  opacity: 0.8;
 }
-
-@keyframes constellation-drift {
-  from {
-    transform: translateX(-120vw);
-  }
-  to {
-    transform: translateX(120vw);
-  }
-}
-
-
-
-
-
-
-
-
 
 
 

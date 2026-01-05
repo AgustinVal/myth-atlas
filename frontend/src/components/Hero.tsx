@@ -23,12 +23,7 @@ export default function Hero() {
             <div className="absolute inset-0 stars-layer pointer-events-none" />
 
             {/* Constellations */}
-
-            {
-
             <ConstellationsLayer /> 
-            
-            }
 
 
             {/* Myth elements */}
