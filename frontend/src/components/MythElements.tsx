@@ -24,7 +24,7 @@ export default function MythElements() {
 
     useEffect(() => {
         setItems(
-            Array.from({ length: 28 }).map((_, i) => ({
+            Array.from({ length: 36 }).map((_, i) => ({
                 id:i,
                 symbol: ELEMENTS[i % ELEMENTS.length],
                 // Posición inicial FUERA del viewport para evitar que se vean los elementos mientras se cargan correctamente

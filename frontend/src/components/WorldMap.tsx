@@ -7,6 +7,8 @@ import dynamic from "next/dynamic"
 import type { MythPointType } from "@/lib/mapLayers"
 import { layerStyles } from "@/lib/mapLayers"
 import MythElements from "./MythElements"
+import ConstellationsLayer from "./ConstellationsLayer"
+import StarsLayer from "./StarsLayer"
 
 const LeafletMap = dynamic(
     () => import("./LeafletMap"),
@@ -80,14 +82,15 @@ export default function WorldMap() {
         hero: 30,         // HERO_POINTS.length,
     }
 
-
-
     // Render
     return (
         <section className="relative h-screen worldmap-bg w-full z-0 px-32 py-16">
 
             {/* Stars layer */}
-            <div className="absolute inset-0 stars-layer pointer-events-none" />
+            <StarsLayer count={666} minSize={1.5} maxSize={4.6} minOpacity={0.2} maxOpacity={0.5} />
+
+            {/* Constellations */}
+            <ConstellationsLayer /> 
 
             {/* Myth elements */}
             <MythElements />

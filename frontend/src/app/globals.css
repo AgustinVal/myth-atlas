@@ -71,41 +71,58 @@ body {
 
 
 
-/* ===== STARS LAYER ===== */
+/* ===== STARS LAYER ===== */ /* Ya no necesario pero lo dejare para cambiar algunas animaciones basandome en esta */
+/* 
+/* .stars-layer {
+/*   position: absolute;
+/*   inset: 0;
+/*   pointer-events: none;
+/* 
+/*   /* estrellas pequeñas (base) */
+/*   background-image:
+/*     radial-gradient(rgba(255,255,255,0.25) 1px, transparent 1px),
+/*     radial-gradient(rgba(255,255,255,0.15) 2px, transparent 2px);
+/* 
+/*   background-size:
+/*     40px 40px,
+/*     140px 140px;
+/* 
+/*   background-position:
+/*     0 0,
+/*     20px 60px;
+/* 
+/*   animation: stars-drift 140s linear infinite;
+/* }
+/* 
+/* @keyframes stars-drift {
+/*   from {
+/*     background-position:
+/*       0 0,
+/*       20px 60px;
+/*   }
+/*   to {
+/*     background-position:
+/*       600px 300px,
+/*       -400px 200px;
+/*   }
+/* }
+/* 
 
-.stars-layer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
+/* ===== STARS DRIFT ===== */
 
-  /* estrellas pequeñas (base) */
-  background-image:
-    radial-gradient(rgba(255,255,255,0.25) 1px, transparent 1px),
-    radial-gradient(rgba(255,255,255,0.15) 2px, transparent 2px);
-
-  background-size:
-    40px 40px,
-    140px 140px;
-
-  background-position:
-    0 0,
-    20px 60px;
-
-  animation: stars-drift 140s linear infinite;
+.stars-drift {
+  animation: stars-drift 80s linear infinite;
 }
 
 @keyframes stars-drift {
   from {
-    background-position:
-      0 0,
-      20px 60px;
+    transform: translateY(0);
   }
   to {
-    background-position:
-      600px 300px,
-      -400px 200px;
+    transform: translateY(-300px);
   }
 }
+
 
 
 
@@ -122,13 +139,6 @@ body {
   z-index: 1;
 }
 
-/*
-.constellation {
-  position: absolute;
-  opacity: 1;
-  will-change: transform;
-}
-*/
 
 @keyframes sky-rotate {
   from {
@@ -190,7 +200,7 @@ body {
 }
 
 .animate-constellations {
-  animation: constellation-drift 220s linear infinite;
+  animation: constellation-drift 120s linear infinite;
 }
 
 
@@ -210,7 +220,7 @@ body {
 
 .myth-element {
   position: absolute;
-  opacity: 0.2;
+  opacity: 0.4;
   animation-name: myth-float;
   animation-timing-function: linear;
   animation-iteration-count: infinite;

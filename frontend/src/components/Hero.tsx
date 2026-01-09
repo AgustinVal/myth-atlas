@@ -6,6 +6,7 @@ import { motion } from "framer-motion"
 //import MythElements from "./MythElements"
 import dynamic from "next/dynamic"
 import ConstellationsLayer from "./ConstellationsLayer"
+import StarsLayer from "./StarsLayer"
 
 
 // No importarlo directo, mejor de esta forma dinamica
@@ -20,11 +21,10 @@ export default function Hero() {
         <section className="relative h-screen hero-bg flex items-center justify-center text-center px-6 overflow-hidden">
             
             {/* Stars layer */}
-            <div className="absolute inset-0 stars-layer pointer-events-none" />
+            <StarsLayer count={666} minSize={1.5} maxSize={4.6} minOpacity={0.2} maxOpacity={0.5} />
 
             {/* Constellations */}
             <ConstellationsLayer /> 
-
 
             {/* Myth elements */}
             <MythElements />
